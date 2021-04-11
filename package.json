@@ -1,0 +1,21 @@
+{
+  "name": "smartgarden-mock",
+  "version": "1.0.0",
+  "description": "## Prequisites - NodeJS / NPM - https://github.com/abandonware/bleno#prerequisites",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bleno": "npm:@abandonware/bleno@^0.5.1-3",
+    "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "babel-node": "^0.0.1-security"
+  }
+}
