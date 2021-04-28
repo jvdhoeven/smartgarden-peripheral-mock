@@ -1,15 +1,15 @@
 import bleno from 'bleno';
 
-const CHARACTERISTIC_TEMP_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+const CHARACTERISTIC_MOIST_UUID = "bib5483e-36e1-4688-b7f5-ea07361b26a8";
 
-export class TemperatureCharacteristic extends bleno.Characteristic {
+export class MoistureCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
     data = Buffer.from("0");
     interval = null;
 
     constructor() {
         const options = {
-            uuid: CHARACTERISTIC_TEMP_UUID,
+            uuid: CHARACTERISTIC_MOIST_UUID,
             properties: ['read', 'write', 'notify'],
             value: null
         };
@@ -28,7 +28,7 @@ export class TemperatureCharacteristic extends bleno.Characteristic {
 
         let i = 0;
         this.interval = setInterval(() => {
-            const fakeTemp = (Math.sin(Math.PI / 2 * ((i % 20) / 10)) * 10 + 5).toFixed(2);
+            const fakeMoist = (Math.sin(Math.PI / 2 * ((i % 20) / 10)) * 10 + 5).toFixed(2);
             notifyCallback(Buffer.from(`${fakeTemp}`));
             i++;
         }, 1000);
