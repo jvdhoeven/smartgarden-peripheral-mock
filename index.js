@@ -1,5 +1,6 @@
 import bleno from 'bleno';
-import { TemperatureCharacteristic } from './characteristics/temperature.js';
+import { TemperatureCharacteristic } from './characteristics/temperature';
+import { MoistureCharacteristic } from './characteristics/moisture';
 
 const { PrimaryService} = bleno;
 
@@ -23,7 +24,8 @@ bleno.on('advertisingStart', function(error) {
       new PrimaryService({
         uuid: SERVICE_UUID,
         characteristics: [
-          new TemperatureCharacteristic()
+          new TemperatureCharacteristic(),
+          new MoistureCharacteristic()
         ]
       })
     ]);
