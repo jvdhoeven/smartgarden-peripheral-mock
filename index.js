@@ -1,6 +1,6 @@
 import bleno from 'bleno';
-import { TemperatureCharacteristic } from './characteristics/temperature';
-import { MoistureCharacteristic } from './characteristics/moisture';
+import { TemperatureCharacteristic } from './characteristics/temperature.js';
+import { MoistureCharacteristic } from './characteristics/moisture.js';
 
 const { PrimaryService} = bleno;
 
