@@ -1,6 +1,6 @@
 import bleno from 'bleno';
 
-const CHARACTERISTIC_MOIST_UUID = "bib5483e-36e1-4688-b7f5-ea07361b26a8";
+const CHARACTERISTIC_MOIST_UUID = "9a0c0611-a48f-4dbc-bde2-31582e606ee5";
 
 export class MoistureCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
