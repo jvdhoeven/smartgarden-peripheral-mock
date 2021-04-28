@@ -29,7 +29,7 @@ export class MoistureCharacteristic extends bleno.Characteristic {
         let i = 0;
         this.interval = setInterval(() => {
             const fakeMoist = (Math.sin(Math.PI / 2 * ((i % 20) / 10)) * 10 + 5).toFixed(2);
-            notifyCallback(Buffer.from(`${fakeTemp}`));
+            notifyCallback(Buffer.from(`${fakeMoist}`));
             i++;
         }, 1000);
 
