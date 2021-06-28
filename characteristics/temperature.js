@@ -17,13 +17,13 @@ export class TemperatureCharacteristic extends bleno.Characteristic {
     }
 
     onReadRequest (offset, callback) {
-        console.log('EchoCharacteristic - onReadRequest: value');
+        console.log('TemperatureCharacteristic - onReadRequest: value');
       
         callback(this.RESULT_SUCCESS, this.data);
     };
 
     onSubscribe (maxValueSize, notifyCallback) {
-        console.log('SensorACharacteristic subscribe');
+        console.log('TemperatureCharacteristic subscribe');
 
         let i = 0;
         this.interval = setInterval(() => {
@@ -36,21 +36,9 @@ export class TemperatureCharacteristic extends bleno.Characteristic {
     }
 
     onUnsubscribe () {
+        console.log('TemperatureCharacteristic unsubscribe');
         clearInterval(this.interval);
         this.notifyCallback = null;
     };
 
-    onWriteRequest (data, offset, withoutResponse, callback) {
-        this.data = data;
-      
-        console.log('EchoCharacteristic - onWriteRequest: value');
-      
-        if (this.notifyCallback) {
-          console.log('EchoCharacteristic - onWriteRequest: notifying');
-      
-          this.notifyCallback(this.data);
-        }
-      
-        callback(this.RESULT_SUCCESS);
-      };
 }

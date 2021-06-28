@@ -19,13 +19,13 @@ export class ValveCharacteristic extends bleno.Characteristic {
     }
 
     onReadRequest (offset, callback) {
-        console.log('EchoCharacteristic - onReadRequest: value');
+        console.log('ValveCharacteristic - onReadRequest: value');
       
         callback(this.RESULT_SUCCESS, this.data);
     };
 
     onSubscribe (maxValueSize, notifyCallback) {
-        console.log('SensorACharacteristic subscribe');
+        console.log('ValveCharacteristic subscribe');
 
         this.interval = setInterval(() => {
             notifyCallback(Buffer.from(`${this.valveState}`));
@@ -35,6 +35,8 @@ export class ValveCharacteristic extends bleno.Characteristic {
     }
 
     onUnsubscribe () {
+        console.log('ValveCharacteristic unsubscribe');
+
         clearInterval(this.interval);
         this.notifyCallback = null;
     };
@@ -42,10 +44,10 @@ export class ValveCharacteristic extends bleno.Characteristic {
     onWriteRequest (data, offset, withoutResponse, callback) {
         this.data = data;
       
-        console.log('EchoCharacteristic - onWriteRequest: value', data);
+        console.log('ValveCharacteristic - onWriteRequest: value', data);
       
         if (this.notifyCallback) {
-          console.log('EchoCharacteristic - onWriteRequest: notifying');
+          console.log('ValveCharacteristic - onWriteRequest: notifying');
       
           this.notifyCallback(this.data);
         }
