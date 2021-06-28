@@ -1,0 +1,5 @@
+export const SERVICE_UUID = '4fafc201-1fb5-459e-8fcc-c5c9c331914b';
+export const CHARACTERISTIC_TEMP = 'beb5483e-36e1-4688-b7f5-ea07361b26a8';
+export const CHARACTERISTIC_TEMP_GROUND = 'a10b02a4-3b1c-45b5-a617-5648120f8e4c';
+export const CHARACTERISTIC_MOISTURE = '9a0c0611-a48f-4dbc-bde2-31582e606ee5';
+export const CHARACTERISTIC_VALVE = 'c3134125-b92d-479f-a437-2de8cea412e7';

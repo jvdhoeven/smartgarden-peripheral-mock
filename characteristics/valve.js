@@ -1,15 +1,17 @@
 import bleno from 'bleno';
-import { CHARACTERISTIC_TEMP } from '../constants.js';
 
-export class TemperatureCharacteristic extends bleno.Characteristic {
+import { CHARACTERISTIC_VALVE } from '../constants.js';
+
+export class ValveCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
     data = Buffer.from("0");
     interval = null;
+    valveState = 0;
 
     constructor() {
         const options = {
-            uuid: CHARACTERISTIC_TEMP,
-            properties: ['read', 'notify'],
+            uuid: CHARACTERISTIC_VALVE,
+            properties: ['read', 'write', 'notify'],
             value: null
         };
 
@@ -25,11 +27,8 @@ export class TemperatureCharacteristic extends bleno.Characteristic {
     onSubscribe (maxValueSize, notifyCallback) {
         console.log('SensorACharacteristic subscribe');
 
-        let i = 0;
         this.interval = setInterval(() => {
-            const fakeTemp = (Math.sin(Math.PI / 2 * ((i % 20) / 10)) * 10 + 5).toFixed(2);
-            notifyCallback(Buffer.from(`${fakeTemp}`));
-            i++;
+            notifyCallback(Buffer.from(`${this.valveState}`));
         }, 1000);
 
         this.notifyCallback = notifyCallback;
@@ -43,7 +42,7 @@ export class TemperatureCharacteristic extends bleno.Characteristic {
     onWriteRequest (data, offset, withoutResponse, callback) {
         this.data = data;
       
-        console.log('EchoCharacteristic - onWriteRequest: value');
+        console.log('EchoCharacteristic - onWriteRequest: value', data);
       
         if (this.notifyCallback) {
           console.log('EchoCharacteristic - onWriteRequest: notifying');

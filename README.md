@@ -1,7 +1,7 @@
 # SmartGarden Mock Peripheral
 
 ## Prequisites
-- NodeJS / NPM
+- NodeJS (v12 - v14) / NPM
 - https://github.com/abandonware/bleno#prerequisites
 
 ## Installation

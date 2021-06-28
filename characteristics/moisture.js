@@ -1,6 +1,5 @@
 import bleno from 'bleno';
-
-const CHARACTERISTIC_MOIST_UUID = "9a0c0611-a48f-4dbc-bde2-31582e606ee5";
+import { CHARACTERISTIC_MOISTURE } from '../constants.js';
 
 export class MoistureCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
@@ -9,8 +8,8 @@ export class MoistureCharacteristic extends bleno.Characteristic {
 
     constructor() {
         const options = {
-            uuid: CHARACTERISTIC_MOIST_UUID,
-            properties: ['read', 'write', 'notify'],
+            uuid: CHARACTERISTIC_MOISTURE,
+            properties: ['read', 'notify'],
             value: null
         };
 

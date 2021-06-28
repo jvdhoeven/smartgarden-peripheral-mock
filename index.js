@@ -1,10 +1,12 @@
 import bleno from 'bleno';
 import { TemperatureCharacteristic } from './characteristics/temperature.js';
 import { MoistureCharacteristic } from './characteristics/moisture.js';
+import { TemperatureGroundCharacteristic } from './characteristics/temperature_ground.js';
+import { ValveCharacteristic } from './characteristics/valve.js';
+
+import { SERVICE_UUID } from './constants.js';
 
 const { PrimaryService} = bleno;
-
-const SERVICE_UUID = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
@@ -25,7 +27,9 @@ bleno.on('advertisingStart', function(error) {
         uuid: SERVICE_UUID,
         characteristics: [
           new TemperatureCharacteristic(),
-          new MoistureCharacteristic()
+          new TemperatureGroundCharacteristic(),
+          new MoistureCharacteristic(),
+          new ValveCharacteristic()
         ]
       })
     ]);

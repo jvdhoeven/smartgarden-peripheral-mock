@@ -1,14 +1,15 @@
 import bleno from 'bleno';
-import { CHARACTERISTIC_TEMP } from '../constants.js';
 
-export class TemperatureCharacteristic extends bleno.Characteristic {
+import { CHARACTERISTIC_TEMP_GROUND } from '../constants.js';
+
+export class TemperatureGroundCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
     data = Buffer.from("0");
     interval = null;
 
     constructor() {
         const options = {
-            uuid: CHARACTERISTIC_TEMP,
+            uuid: CHARACTERISTIC_TEMP_GROUND,
             properties: ['read', 'notify'],
             value: null
         };
