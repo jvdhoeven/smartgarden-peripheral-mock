@@ -7,6 +7,7 @@ export class ValveCharacteristic extends bleno.Characteristic {
     data = Buffer.from("0");
     interval = null;
     valveState = 0;
+    i = 0;
 
     constructor() {
         const options = {
@@ -21,6 +22,10 @@ export class ValveCharacteristic extends bleno.Characteristic {
     onReadRequest (offset, callback) {
         console.log('ValveCharacteristic - onReadRequest: value');
       
+        const fake = this.i % 2;
+        this.data = Buffer.from(`${fake}`)
+        this.i++;
+
         callback(this.RESULT_SUCCESS, this.data);
     };
 
@@ -29,7 +34,7 @@ export class ValveCharacteristic extends bleno.Characteristic {
 
         this.interval = setInterval(() => {
             notifyCallback(Buffer.from(`${this.valveState}`));
-        }, 1000);
+        }, 10000);
 
         this.notifyCallback = notifyCallback;
     }

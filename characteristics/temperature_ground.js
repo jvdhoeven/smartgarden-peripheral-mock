@@ -6,6 +6,7 @@ export class TemperatureGroundCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
     data = Buffer.from("0");
     interval = null;
+    i = 0;
 
     constructor() {
         const options = {
@@ -20,6 +21,10 @@ export class TemperatureGroundCharacteristic extends bleno.Characteristic {
     onReadRequest (offset, callback) {
         console.log('TemperatureGroundCharacteristic - onReadRequest: value');
       
+        const fake = (Math.sin(Math.PI / 2 * ((this.i % 20) / 10)) * 10 + 5).toFixed(2);
+        this.data = Buffer.from(`${fake}`)
+        this.i++;
+
         callback(this.RESULT_SUCCESS, this.data);
     };
 
@@ -31,7 +36,7 @@ export class TemperatureGroundCharacteristic extends bleno.Characteristic {
             const fakeTemp = (Math.sin(Math.PI / 2 * ((i % 20) / 10)) * 10 + 5).toFixed(2);
             notifyCallback(Buffer.from(`${fakeTemp}`));
             i++;
-        }, 1000);
+        }, 10000);
 
         this.notifyCallback = notifyCallback;
     }
