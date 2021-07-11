@@ -16,7 +16,8 @@ function bytesToString(buffer) {
 
 export class DateTimeCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
-    data = Buffer.from("0");;
+    date = new Date();
+    data = Buffer.from(this.date.toLocaleString());
     
     constructor() {
         const options = {

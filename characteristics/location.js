@@ -16,7 +16,7 @@ function bytesToString(buffer) {
 
 export class LocationCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
-    data = Buffer.from("0");
+    data = Buffer.from("50.935173;6.953101");
     
     constructor() {
         const options = {

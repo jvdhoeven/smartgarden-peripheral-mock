@@ -2,7 +2,7 @@
 
 ## Prequisites
 - NodeJS (v12 - v14) / NPM
-- https://github.com/abandonware/bleno#prerequisites
+- Install prerequisites from Bleno! https://github.com/abandonware/bleno#prerequisites
 
 ## Installation
 

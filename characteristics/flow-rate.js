@@ -8,7 +8,7 @@ function bytesToString(buffer) {
 
 export class FlowRateCharacteristic extends bleno.Characteristic {
     notifyCallback = null;
-    data = Buffer.from("0");
+    data = Buffer.from("3");
     
     constructor() {
         const options = {
